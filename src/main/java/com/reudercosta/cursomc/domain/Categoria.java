@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Categoria implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,12 +17,6 @@ public class Categoria implements Serializable {
 	private String nome;
 
 	public Categoria() {
-	}
-
-	public Categoria(int id, String nome) {
-		super();
-		this.id = id;
-		this.nome = nome;
 	}
 
 	public int getId() {
@@ -62,7 +56,5 @@ public class Categoria implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 
 }
