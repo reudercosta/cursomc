@@ -1,4 +1,4 @@
-package com.reudercosta.cursomc.categotiaDTO;
+package com.reudercosta.cursomc.DTO;
 
 import java.io.Serializable;
 

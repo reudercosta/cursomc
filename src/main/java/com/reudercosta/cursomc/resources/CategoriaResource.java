@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.reudercosta.cursomc.categotiaDTO.CategoriaDTO;
+import com.reudercosta.cursomc.DTO.CategoriaDTO;
 import com.reudercosta.cursomc.domain.Categoria;
 import com.reudercosta.cursomc.services.CategoriaService;
 

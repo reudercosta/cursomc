@@ -10,7 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.reudercosta.cursomc.categotiaDTO.CategoriaDTO;
+import com.reudercosta.cursomc.DTO.CategoriaDTO;
 import com.reudercosta.cursomc.domain.Categoria;
 import com.reudercosta.cursomc.repositories.CategoriaRepository;
 import com.reudercosta.cursomc.services.excpetions.DataIntegrityException;
