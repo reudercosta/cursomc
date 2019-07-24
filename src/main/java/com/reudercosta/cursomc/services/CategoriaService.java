@@ -1,7 +1,6 @@
 package com.reudercosta.cursomc.services;
 
 import java.util.List;
-import java.util.function.ObjDoubleConsumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -36,9 +35,15 @@ public class CategoriaService {
 		return repo.save(obj);
 	}
 
+	//public Categoria update(Categoria obj) {
+//		find(obj.getId());
+//		return repo.save(obj);
+//	}
+	
 	public Categoria update(Categoria obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		Categoria newObj = find(obj.getId());
+		updateData(newObj,obj);
+		return repo.save(newObj);
 	}
 
 	public void delete(Integer id) {
@@ -62,5 +67,9 @@ public class CategoriaService {
 
 	public Categoria fromDTO(CategoriaDTO objDTO) {
 		return new Categoria(objDTO.getId(), objDTO.getNome());
+	}
+	
+	private void updateData(Categoria newObj, Categoria Obj) {
+		newObj.setNome(Obj.getNome());
 	}
 }
