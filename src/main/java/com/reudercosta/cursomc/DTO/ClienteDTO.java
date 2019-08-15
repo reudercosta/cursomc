@@ -7,7 +7,9 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.reudercosta.cursomc.domain.Cliente;
+import com.reudercosta.cursomc.services.validation.ClienteUpdate;
 
+@ClienteUpdate
 public class ClienteDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -28,8 +30,8 @@ public class ClienteDTO implements Serializable {
 	
 	public ClienteDTO(Cliente obj) {
 		id = obj.getId();
-		email = obj.getNome();
-		nome = obj.getEmail();
+		nome = obj.getNome();
+		email = obj.getEmail();
 	}
 
 	public Integer getId() {
