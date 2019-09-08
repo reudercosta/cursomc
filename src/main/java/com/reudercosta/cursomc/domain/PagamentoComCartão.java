@@ -1,7 +1,5 @@
 package com.reudercosta.cursomc.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 
 import com.reudercosta.cursomc.domain.enums.EstadoPagamento;
