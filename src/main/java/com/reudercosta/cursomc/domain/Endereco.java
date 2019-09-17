@@ -49,11 +49,11 @@ public class Endereco implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public Integer getIg() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setIg(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
