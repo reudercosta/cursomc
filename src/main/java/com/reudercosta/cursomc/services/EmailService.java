@@ -1,8 +1,10 @@
 package com.reudercosta.cursomc.services;
 
+
 import org.springframework.mail.SimpleMailMessage;
 
 import com.reudercosta.cursomc.domain.Pedido;
+
 
 public interface EmailService {
 
@@ -10,3 +12,4 @@ public interface EmailService {
 
 	void sendEmail(SimpleMailMessage msg);
 }
+

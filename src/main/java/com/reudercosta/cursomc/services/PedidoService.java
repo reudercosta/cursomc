@@ -10,11 +10,9 @@ import com.reudercosta.cursomc.domain.ItemPedido;
 import com.reudercosta.cursomc.domain.PagamentoComBoleto;
 import com.reudercosta.cursomc.domain.Pedido;
 import com.reudercosta.cursomc.domain.enums.EstadoPagamento;
-import com.reudercosta.cursomc.repositories.ClienteRepository;
 import com.reudercosta.cursomc.repositories.ItemPedidoRepository;
 import com.reudercosta.cursomc.repositories.PagamentoRepository;
 import com.reudercosta.cursomc.repositories.PedidoRepository;
-import com.reudercosta.cursomc.repositories.ProdutoRepository;
 import com.reudercosta.cursomc.services.excpetions.ObjectNotFoundException;
 
 @Service
