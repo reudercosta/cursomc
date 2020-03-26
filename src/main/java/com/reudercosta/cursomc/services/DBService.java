@@ -122,18 +122,20 @@ public class DBService {
 		estadoRepository.save(Arrays.asList(est1, est2));
 		cidadeRepository.save(Arrays.asList(c1, c2, c3));
 
-		Cliente cli1 = new Cliente(null, "Maria Silva", "reudercerqueira@gmail.com", "00208551506", TipoCliente.PESSOAFISICA, pe.encode("123"));
-		cli1.getTelefones().addAll(Arrays.asList("27363323", "93838392"));
+		Cliente cli1 = new Cliente(null, "Maria Silva", "nelio.cursos@gmail.com", "36378912377", TipoCliente.PESSOAFISICA, pe.encode("123"));
+		cli1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
+		cli1.addPerfil(Perfil.CLIENTE);
 		
-		Cliente cli2 = new Cliente(null, "Ana Costa", "reudercerqueira@hotmail.com", "94045370048", TipoCliente.PESSOAFISICA, pe.encode("123"));
-		cli2.getTelefones().addAll(Arrays.asList("27363323", "93838392"));
+		Cliente cli2 = new Cliente(null, "Ana Costa", "nelio.iftm@gmail.com", "31628382740", TipoCliente.PESSOAFISICA, pe.encode("123"));
+		cli2.getTelefones().addAll(Arrays.asList("93883321", "34252625"));
 		cli2.addPerfil(Perfil.ADMIN);
 
 		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", c1, cli1);
 		Endereco e2 = new Endereco(null, "Av. Flores", "105", "Sala 800", "Centro", "38220000", c2, cli1);
 		Endereco e3 = new Endereco(null, "Av. Batolomeu", "105", "Sala 880", "Centro", "44055860", c2, cli2);
 
-		cli1.getEnderecos().addAll(Arrays.asList(e1, e2,e3));
+		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+		cli2.getEnderecos().addAll(Arrays.asList(e3));
 
 		clienteRepository.save(Arrays.asList(cli1,cli2));
 		enderecoRepository.save(Arrays.asList(e1, e2, e3));

@@ -3,7 +3,6 @@ package com.reudercosta.cursomc.DTO;
 import java.io.Serializable;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.reudercosta.cursomc.domain.Categoria;
