@@ -2,6 +2,7 @@ package com.reudercosta.cursomc.services;
 
 import java.util.List;
 
+import javax.security.sasl.AuthenticationException;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,13 @@ import com.reudercosta.cursomc.DTO.ClienteNewDTO;
 import com.reudercosta.cursomc.domain.Cidade;
 import com.reudercosta.cursomc.domain.Cliente;
 import com.reudercosta.cursomc.domain.Endereco;
+import com.reudercosta.cursomc.domain.enums.Perfil;
 import com.reudercosta.cursomc.domain.enums.TipoCliente;
 import com.reudercosta.cursomc.repositories.CidadeRepository;
 import com.reudercosta.cursomc.repositories.ClienteRepository;
 import com.reudercosta.cursomc.repositories.EnderecoRepository;
+import com.reudercosta.cursomc.security.UserSS;
+import com.reudercosta.cursomc.services.excpetions.AuthorizationException;
 import com.reudercosta.cursomc.services.excpetions.DataIntegrityException;
 import com.reudercosta.cursomc.services.excpetions.ObjectNotFoundException;
 
@@ -40,6 +44,12 @@ public class ClienteService {
 	private EnderecoRepository enderecoRepository;
 
 	public Cliente find(Integer id) {
+		
+		UserSS user = UserService.authenticated();
+		if(user == null || !user.hasRole(Perfil.ADMIN) && ! id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado!!");
+		}
+		
 		Cliente obj = repo.findOne(id);
 		if (obj == null) {
 			throw new ObjectNotFoundException("Objeto não encontrado, id: " + id + "Tipo: " + Cliente.class.getName());
