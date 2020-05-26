@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.amazonaws.services.s3.AmazonS3;
 import com.reudercosta.cursomc.domain.Categoria;
 import com.reudercosta.cursomc.domain.Cidade;
 import com.reudercosta.cursomc.domain.Cliente;
@@ -31,10 +32,13 @@ import com.reudercosta.cursomc.repositories.ItemPedidoRepository;
 import com.reudercosta.cursomc.repositories.PagamentoRepository;
 import com.reudercosta.cursomc.repositories.PedidoRepository;
 import com.reudercosta.cursomc.repositories.ProdutoRepository;
+import com.reudercosta.cursomc.services.S3Service;
 
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {
 
+	@Autowired
+	private S3Service s3Service;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -43,7 +47,8 @@ public class CursomcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-
+		
+		s3Service.uploadFile("/home/reuder/Documents/oculos.png");
 	}
 
 }
