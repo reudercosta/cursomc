@@ -1,8 +1,8 @@
 package com.reudercosta.cursomc.services;
 
+import java.net.URI;
 import java.util.List;
 
-import javax.security.sasl.AuthenticationException;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.reudercosta.cursomc.DTO.ClienteDTO;
 import com.reudercosta.cursomc.DTO.ClienteNewDTO;
@@ -42,6 +43,9 @@ public class ClienteService {
 	
 	@Autowired
 	private EnderecoRepository enderecoRepository;
+	
+	@Autowired
+	private S3Service s3service;
 
 	public Cliente find(Integer id) {
 		
@@ -111,6 +115,10 @@ public class ClienteService {
 	private void updateData(Cliente newObj, Cliente Obj) {
 		newObj.setNome(Obj.getNome());
 		newObj.setEmail(Obj.getEmail());
+	}
+	
+	public URI uploadProfilePicture(MultipartFile multiPartFile) {
+		return s3service.uploadFile(multiPartFile);
 	}
 
 }

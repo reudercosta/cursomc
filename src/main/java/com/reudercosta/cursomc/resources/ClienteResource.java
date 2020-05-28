@@ -16,12 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.reudercosta.cursomc.DTO.CategoriaDTO;
 import com.reudercosta.cursomc.DTO.ClienteDTO;
 import com.reudercosta.cursomc.DTO.ClienteNewDTO;
-import com.reudercosta.cursomc.domain.Categoria;
 import com.reudercosta.cursomc.domain.Cliente;
 import com.reudercosta.cursomc.services.ClienteService;
 
@@ -39,7 +38,7 @@ public class ClienteResource {
 		return ResponseEntity.ok().body(obj);
 
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDTO) {
 		Cliente obj = service.fromDTO(objDTO);
@@ -49,8 +48,6 @@ public class ClienteResource {
 		return ResponseEntity.created(uri).build();
 	}
 
-
-	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<?> update(@Valid @RequestBody ClienteDTO objDTO, @PathVariable Integer id) {
 		Cliente obj = service.fromDTO(objDTO);
@@ -88,6 +85,12 @@ public class ClienteResource {
 		Page<ClienteDTO> listDTO = list.map(obj -> new ClienteDTO(obj));
 		return ResponseEntity.ok().body(listDTO);
 
+	}
+
+	@RequestMapping(value = "/picture", method = RequestMethod.POST)
+	public ResponseEntity<Void> uploadProfilePicture(@RequestParam(name = "file") MultipartFile file) {
+		URI uri = service.uploadProfilePicture(file);
+		return ResponseEntity.created(uri).build();
 	}
 
 }
