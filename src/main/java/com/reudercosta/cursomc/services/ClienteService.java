@@ -54,6 +54,9 @@ public class ClienteService {
 	
 	@Value("${img.prefix.client.profile}")
 	private String prefix;
+	
+	@Value("${img.profile.size}")
+	private int size;
 
 	public Cliente find(Integer id) {
 		
@@ -131,6 +134,9 @@ public class ClienteService {
 			throw new AuthorizationException("Acesso Negado!!");
 		}
 		BufferedImage jpgImage = imageService.getJpgImageFromFile(multiPartFile);
+		jpgImage = imageService.cropSquare(jpgImage);
+		jpgImage = imageService.rezise(jpgImage, size);
+		
 		String fileName = prefix+user.getId()+".jpg";
 		
 		return s3service.uploadFile(imageService.getInputStream(jpgImage,"jpg"), fileName, "image");
